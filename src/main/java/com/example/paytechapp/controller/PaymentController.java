@@ -2,7 +2,7 @@ package com.example.paytechapp.controller;
 
 import com.example.paytechapp.dto.request.PaymentRequestDTO;
 import com.example.paytechapp.dto.response.PaymentResponseDTO;
-import com.example.paytechapp.service.PaymentService;
+import com.example.paytechapp.service.ProviderPaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +13,10 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class PaymentController {
 
-    private final PaymentService paymentService;
+    private final ProviderPaymentService providerPaymentService;
 
     @RequestMapping(value = "/payment", method = RequestMethod.POST)
-    public PaymentResponseDTO createPayment(@RequestBody PaymentRequestDTO request) throws IOException {
-        return paymentService.createPayment(request);
+    public PaymentResponseDTO createPayment(@RequestBody PaymentRequestDTO request) {
+        return providerPaymentService.createPayment(request);
     }
 }

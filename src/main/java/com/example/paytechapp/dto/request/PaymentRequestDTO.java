@@ -2,11 +2,15 @@ package com.example.paytechapp.dto.request;
 
 import lombok.Data;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 @Data
 public class PaymentRequestDTO {
+
+    private String name;
+    private String surname;
+    private String email;
     private String paymentType;
-    private BigInteger amount;
+    private BigDecimal amount;
     private String currency;
 }

@@ -1,7 +1,9 @@
 CREATE TABLE users
 (
     id       bigserial not null primary key,
-    username varchar(500),
+    name varchar(50),
+    surname varchar(50),
+    email varchar(100),
     created  timestamp without time zone default now(),
     updated  timestamp without time zone default now()
 );
