@@ -19,4 +19,8 @@ public class TxPaymentService {
                 request.getAmount()
         ));
     }
+
+    public TxPaymentEntity save(TxPaymentEntity tx){
+        return txPaymentRepository.save(tx);
+    }
 }

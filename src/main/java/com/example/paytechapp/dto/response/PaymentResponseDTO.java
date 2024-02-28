@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class PaymentResponseDTO {
     private Integer  status;
-    private ResultResponseDTO result;
+    private ResultResponseDTO result = new ResultResponseDTO();
 }
