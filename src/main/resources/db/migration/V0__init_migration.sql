@@ -1,4 +1,4 @@
-CREATE TABLE users
+CREATE TABLE if not exists users
 (
     id         bigserial not null primary key,
     username   varchar(50),
@@ -11,7 +11,7 @@ CREATE TABLE users
     updated    timestamp without time zone default now()
 );
 
-CREATE TABLE roles
+CREATE TABLE if not exists roles
 (
     id      bigserial not null primary key,
     name    varchar(50),
