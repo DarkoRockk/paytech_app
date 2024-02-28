@@ -5,17 +5,18 @@ CREATE TABLE users
     first_name varchar(50),
     last_name  varchar(50),
     email      varchar(100),
-    password   varchar(100),
+    password   varchar(250),
+    role       varchar(50),
     created    timestamp without time zone default now(),
     updated    timestamp without time zone default now()
 );
 
 CREATE TABLE roles
 (
-    id         bigserial not null primary key,
-    name   varchar(50),
-    created    timestamp without time zone default now(),
-    updated    timestamp without time zone default now()
+    id      bigserial not null primary key,
+    name    varchar(50),
+    created timestamp without time zone default now(),
+    updated timestamp without time zone default now()
 );
 
 CREATE TABLE tx_payments

@@ -4,12 +4,6 @@ import com.example.paytechapp.entity.base.BaseEntity;
 import com.example.paytechapp.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Builder
@@ -17,7 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@Table(name = "users", schema = "public")
 public class UserEntity extends BaseEntity {
 
     @Column(name = "username", unique = true, nullable = false)
