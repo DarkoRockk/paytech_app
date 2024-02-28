@@ -15,25 +15,6 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
-    public UserEntity getOrCreateUser(PaymentRequestDTO request) {
-        var user = getUserByEmail(request.getEmail());
-        if (user == null) {
-            user = userRepository.save(
-                    UserEntity.builder()
-                            .username(request.getUsername())
-                            .firstName(request.getFirstName())
-                            .lastName(request.getLastName())
-                            .password("dddd")
-                            .role(Role.ROLE_USER)
-                            .email(request.getEmail())
-                            .build()
-            );
-        }
-        System.out.println(user);
-        return user;
-    }
-
     public UserEntity getUserByEmail(String email) {
 
         return userRepository.findByEmail(email);

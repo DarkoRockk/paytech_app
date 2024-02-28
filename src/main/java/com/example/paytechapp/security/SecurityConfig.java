@@ -32,7 +32,6 @@ public class SecurityConfig {
         http
                 .cors(withDefaults())
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .anyRequest().authenticated()
                 )

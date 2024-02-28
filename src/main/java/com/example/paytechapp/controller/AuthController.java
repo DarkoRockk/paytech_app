@@ -16,7 +16,7 @@ public class AuthController {
 
     private final UserService userService;
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String home() {
         return "index";
     }

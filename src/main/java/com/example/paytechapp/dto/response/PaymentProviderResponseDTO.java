@@ -3,7 +3,7 @@ package com.example.paytechapp.dto.response;
 import lombok.Data;
 
 @Data
-public class PaymentResponseDTO {
+public class PaymentProviderResponseDTO {
     private Integer  status;
     private ResultResponseDTO result = new ResultResponseDTO();
 }

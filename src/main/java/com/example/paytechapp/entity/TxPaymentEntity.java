@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 
 @Entity
@@ -25,5 +26,27 @@ public class TxPaymentEntity extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     public PaymentStatusEnum status = PaymentStatusEnum.IN_PROCESS;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TxPaymentEntity that)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(user, that.user) && Objects.equals(amount, that.amount) && status == that.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), user, amount, status);
+    }
+
+    @Override
+    public String toString() {
+        return "TxPaymentEntity{" +
+                "user=" + user +
+                ", amount=" + amount +
+                ", status=" + status +
+                "} " + super.toString();
+    }
 }
 

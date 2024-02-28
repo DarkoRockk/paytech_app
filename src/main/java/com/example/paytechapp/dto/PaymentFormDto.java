@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 @Data
 public class PaymentFormDto {
 
+    private String paymentType = "DEPOSIT";
+
     @NotEmpty
     private BigDecimal amount;
 

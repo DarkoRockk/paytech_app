@@ -1,8 +1,8 @@
 package com.example.paytechapp.service;
 
 import com.example.paytechapp.client.PaymentClient;
-import com.example.paytechapp.dto.request.PaymentRequestDTO;
-import com.example.paytechapp.dto.response.PaymentResponseDTO;
+import com.example.paytechapp.dto.PaymentFormDto;
+import com.example.paytechapp.dto.response.PaymentProviderResponseDTO;
 import com.example.paytechapp.enums.PaymentStatusEnum;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
@@ -10,10 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class ProviderPaymentService {
+public class PaymentProviderService {
 
     private final PaymentClient client;
     private final UserService userService;
@@ -21,10 +23,10 @@ public class ProviderPaymentService {
     private final String AUTH_TOKEN = "Bearer cAmmvalAikARkB81fgxgMtnMbEdNbuWa";
 
     @Transactional
-    public PaymentResponseDTO createPayment(PaymentRequestDTO request) {
-        var user = userService.getOrCreateUser(request);
+    public PaymentProviderResponseDTO processPayment(PaymentFormDto request, Principal principal) {
+        var user = userService.getUserByEmail(principal.getName());
         var tx = txPaymentService.create(request, user);
-        var response = new PaymentResponseDTO();
+        var response = new PaymentProviderResponseDTO();
         try {
             response = client.createPayment(AUTH_TOKEN, request);
             tx.setStatus(PaymentStatusEnum.COMPLETED);
