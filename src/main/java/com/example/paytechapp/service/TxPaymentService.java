@@ -1,7 +1,6 @@
 package com.example.paytechapp.service;
 
 import com.example.paytechapp.dto.PaymentFormDto;
-import com.example.paytechapp.dto.request.PaymentRequestDTO;
 import com.example.paytechapp.entity.TxPaymentEntity;
 import com.example.paytechapp.entity.UserEntity;
 import com.example.paytechapp.enums.PaymentStatusEnum;

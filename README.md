@@ -15,7 +15,7 @@ This application is a robust payment system designed to handle transactions secu
     - Seamlessly interacts with the database through Spring Compose framework.
 
 3. **Local Database Duplication**:
-    - Duplicates all user transactions within a local database to ensure data redundancy and backup.
+    - Duplicates all user transactions within a local database to ensure data redundancy and backup.(should be optimized with webhook response handling)
 
 4. **Basic Authentication**:
     - Implements basic authentication to authenticate and authorize users securely.
