@@ -7,6 +7,7 @@ import com.example.paytechapp.enums.PaymentStatusEnum;
 import com.example.paytechapp.repository.TxPaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +23,7 @@ public class TxPaymentService {
                 .build());
     }
 
+    @Transactional
     public TxPaymentEntity save(TxPaymentEntity tx) {
         return txPaymentRepository.save(tx);
     }
