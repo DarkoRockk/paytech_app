@@ -1,6 +1,6 @@
 package com.example.paytechapp.service;
 
-import com.example.paytechapp.dto.UserDto;
+import com.example.paytechapp.dto.UserRegistrationDto;
 import com.example.paytechapp.dto.request.PaymentRequestDTO;
 import com.example.paytechapp.entity.UserEntity;
 import com.example.paytechapp.enums.Role;
@@ -37,7 +37,7 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public UserEntity save(UserDto user) {
+    public UserEntity save(UserRegistrationDto user) {
         return userRepository.save(
                 UserEntity.builder()
                         .username(user.getFirstName())

@@ -1,6 +1,6 @@
 package com.example.paytechapp.controller;
 
-import com.example.paytechapp.dto.UserDto;
+import com.example.paytechapp.dto.UserRegistrationDto;
 import com.example.paytechapp.entity.UserEntity;
 import com.example.paytechapp.service.UserService;
 import jakarta.validation.Valid;
@@ -23,14 +23,13 @@ public class AuthController {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        // create model object to store form data
-        UserDto user = new UserDto();
+        UserRegistrationDto user = new UserRegistrationDto();
         model.addAttribute("user", user);
         return "register";
     }
 
     @PostMapping("/register/save")
-    public String registration(@Valid @ModelAttribute("user") UserDto userDto,
+    public String registration(@Valid @ModelAttribute("user") UserRegistrationDto userDto,
                                BindingResult result,
                                Model model) {
         UserEntity existingUser = userService.getUserByEmail(userDto.getEmail());
@@ -44,7 +43,6 @@ public class AuthController {
             model.addAttribute("user", userDto);
             return "/register";
         }
-
         userService.save(userDto);
         return "redirect:/register?success";
     }
