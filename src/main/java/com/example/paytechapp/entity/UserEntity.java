@@ -1,47 +1,66 @@
 package com.example.paytechapp.entity;
 
 import com.example.paytechapp.entity.base.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import java.util.Objects;
+import com.example.paytechapp.enums.Role;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
+@Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
-@RequiredArgsConstructor
-public class UserEntity extends BaseEntity {
-    String name = null;
-    String surname = null;
-    String email = null;
+public class UserEntity extends BaseEntity implements UserDetails {
 
-    public UserEntity(String name, String surname, String email) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
+    @Column(name = "username", unique = true, nullable = false)
+    private String username;
+
+    @Column(name = "first_name", unique = true, nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", unique = true, nullable = false)
+    private String lastName;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof UserEntity that)) return false;
-        return Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(email, that.email);
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name, surname, email);
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
     @Override
-    public String toString() {
-        return "UserEntity{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

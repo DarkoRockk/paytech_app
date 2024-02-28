@@ -8,4 +8,6 @@ import java.math.BigInteger;
 public interface UserRepository extends JpaRepository<UserEntity, BigInteger> {
 
     UserEntity findByEmail(String email);
+
+    UserEntity findByUsernameOrEmail (String username, String email);
 }

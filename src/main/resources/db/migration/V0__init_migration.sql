@@ -1,11 +1,14 @@
 CREATE TABLE users
 (
-    id       bigserial not null primary key,
-    name varchar(50),
-    surname varchar(50),
-    email varchar(100),
-    created  timestamp without time zone default now(),
-    updated  timestamp without time zone default now()
+    id         bigserial not null primary key,
+    username   varchar(50),
+    first_name varchar(50),
+    last_name  varchar(50),
+    email      varchar(100),
+    password   varchar(100),
+    role       varchar(50),
+    created    timestamp without time zone default now(),
+    updated    timestamp without time zone default now()
 );
 
 CREATE TABLE tx_payments

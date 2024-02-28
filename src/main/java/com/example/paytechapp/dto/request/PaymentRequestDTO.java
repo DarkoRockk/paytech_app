@@ -7,8 +7,9 @@ import java.math.BigDecimal;
 @Data
 public class PaymentRequestDTO {
 
-    private String name;
-    private String surname;
+    private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     private String paymentType;
     private BigDecimal amount;

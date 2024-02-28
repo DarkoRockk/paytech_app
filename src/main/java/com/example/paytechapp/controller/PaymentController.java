@@ -6,10 +6,7 @@ import com.example.paytechapp.service.ProviderPaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-
 @RestController
-@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class PaymentController {
 
